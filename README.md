@@ -11,4 +11,8 @@ Solving daily leetcode questions for DSA practice
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/MCqueen9500/leetcode_daly/tree/master/0001-two-sum) |
+## Bit Manipulation
+|  |
+| ------- |
+| [1318-minimum-flips-to-make-a-or-b-equal-to-c](https://github.com/MCqueen9500/leetcode_daly/tree/master/1318-minimum-flips-to-make-a-or-b-equal-to-c) |
 <!---LeetCode Topics End-->
