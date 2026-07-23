@@ -19,6 +19,7 @@ Solving daily leetcode questions for DSA practice
 |  |
 | ------- |
 | [0155-min-stack](https://github.com/MCqueen9500/leetcode_daly/tree/master/0155-min-stack) |
+| another problem in stack - #71
 ## Design
 |  |
 | ------- |
