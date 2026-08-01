@@ -1,33 +1,32 @@
 class Solution {
     public String removeKdigits(String num, int k) {
-        StringBuilder stack = new StringBuilder();
-
-        for (char ch : num.toCharArray()) {
-
-            while (stack.length() > 0 &&
-                   k > 0 &&
-                   stack.charAt(stack.length() - 1) > ch) {
-                stack.deleteCharAt(stack.length() - 1);
-                k--;
-            }
-
-            stack.append(ch);
+        if (num.length() == k) {
+            return "0";
         }
 
-        // If removals are still left, remove from the end
-        while (k > 0) {
-            stack.deleteCharAt(stack.length() - 1);
+        StringBuilder ans = new StringBuilder();
+        for (int i = 0; i < num.length(); i++) {
+            char ch = num.charAt(i);
+            while (ans.length() > 0 && k > 0 && ch < ans.charAt(ans.length() - 1)) {
+                ans.deleteCharAt(ans.length() - 1);
+                k--;
+            }
+            ans.append(ch);
+        }
+
+        // if k still remains, the stack is non-decreasing, so trim from the end
+        while (k > 0 && ans.length() > 0) {
+            ans.deleteCharAt(ans.length() - 1);
             k--;
         }
 
-        // Remove leading zeros
-        int i = 0;
-        while (i < stack.length() && stack.charAt(i) == '0') {
-            i++;
+        // strip leading zeros
+        int start = 0;
+        while (start < ans.length() - 1 && ans.charAt(start) == '0') {
+            start++;
         }
 
-        String ans = stack.substring(i);
-
-        return ans.isEmpty() ? "0" : ans;
+        String result = ans.substring(start);
+        return result.isEmpty() ? "0" : result;
     }
 }
