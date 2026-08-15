@@ -1,38 +1,39 @@
 class Solution {
     public void nextPermutation(int[] nums) {
-
-        int i = nums.length - 2;
-
-        // 1. Find the first decreasing element from the right
-        while (i >= 0 && nums[i] >= nums[i + 1]) {
-            i--;
+        if(nums.length == 1){
+            return;
         }
-
-        // 2. If found, find the smallest element greater than nums[i]
-        if (i >= 0) {
-            int j = nums.length - 1;
-
-            while (nums[j] <= nums[i]) {
-                j--;
+        int front = nums.length - 2;
+        int back = nums.length - 1;
+        boolean rev_sorted = true;
+        while(front >=0){
+            back = nums.length - 1;
+            if(nums[front]<nums[back] ){
+                rev_sorted = false;
+                int temp = nums[front];
+                int i;
+                for(i = front + 1;i<nums.length;i++){
+                    if(nums[i] > temp){
+                        break;
+                    }
+                }
+                nums[front] = nums[i];
+                nums[i] = temp;
+                return;
             }
-
-            // Swap
-            int temp = nums[i];
-            nums[i] = nums[j];
-            nums[j] = temp;
+            else{
+                int i = front;
+                int j = front + 1;
+                while(j<nums.length){
+                    int temp = nums[i];
+                    nums[i] = nums[j];
+                    nums[j] = temp;
+                    i++;
+                    j++;
+                }
+            }
+            front--;
         }
-
-        // 3. Reverse everything after i
-        int left = i + 1;
-        int right = nums.length - 1;
-
-        while (left < right) {
-            int temp = nums[left];
-            nums[left] = nums[right];
-            nums[right] = temp;
-
-            left++;
-            right--;
-        }
+       
     }
 }
